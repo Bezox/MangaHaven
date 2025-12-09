@@ -8,6 +8,30 @@ document.addEventListener('DOMContentLoaded', function() {
     initImageModal();
     initReviews();
 });
+window.addEventListener('resize', handleResize);
+
+document.addEventListener('DOMContentLoaded', function() {
+ 
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    if (productId && window.ProductManager) {
+        const product = window.ProductManager.getProductById(productId);
+        if (product) {
+            
+            populateProductPage(product);
+        }
+    }
+    
+ 
+});
+
+function populateProductPage(product) {
+   
+    document.querySelector('.product-title').textContent = product.name;
+    document.querySelector('.price-current').textContent = `${product.price} грн`;
+
+}
 
 // Галерея изображений
 function initProductGallery() {
@@ -357,4 +381,3 @@ function handleResize() {
     }
 }
 
-window.addEventListener('resize', handleResize);

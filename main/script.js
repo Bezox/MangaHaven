@@ -74,37 +74,7 @@ function initAnimations() {
     });
 }
 
-// Функциональность поиска
-function initSearchFunctionality() {
-    const searchBar = document.getElementById('search-bar');
-    const searchInput = searchBar?.querySelector('input');
-    const searchBtn = searchBar?.querySelector('.search-btn');
-    
-    if (searchInput && searchBtn) {
-        // Поиск при нажатии Enter
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch(this.value);
-            }
-        });
-        
-        // Поиск при клике на кнопку
-        searchBtn.addEventListener('click', function() {
-            performSearch(searchInput.value);
-        });
-    }
-}
 
-// Выполнение поиска
-function performSearch(query) {
-    if (query.trim()) {
-        if (window.ShoppingCart) {
-            window.ShoppingCart.showNotification(`Пошук: "${query}"`);
-        } else {
-            console.log('Searching for:', query);
-        }
-    }
-}
 
 // Кнопки "Детальніше"
 function initDetailButtons() {
@@ -137,3 +107,32 @@ window.addEventListener('resize', function() {
         if (mobileMenuBtn) mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация базового функционала
+    initMobileMenu();
+    initSmoothScrolling();
+    initAnimations();
+});
+// Глобальная переменная для доступа к менеджеру товаров
+window.ProductManager = null;
+
+// Функция инициализации
+function initProducts() {
+    window.ProductManager = new ProductManager();
+    console.log('Менеджер товаров инициализирован');
+    return window.ProductManager;
+}
+
+// Автоматическая инициализация
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализируем только если есть поиск на странице
+    const searchBar = document.querySelector('.search-bar');
+    if (searchBar) {
+        initProducts();
+    }
+});
+
+// Экспорт для использования в других модулях
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { ProductManager, initProducts };
+}
