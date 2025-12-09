@@ -4,16 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>One Piece Том 102 - Manga Haven</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="OPS.css" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/main/style.css" />
+    <link rel="stylesheet" href="/JS-bt/basket/basket.css">
   </head>
   <body>
     <header id="main-header" class="header">
@@ -29,10 +24,10 @@
               <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="action-icons">
-              <button id="cart-btn" class="icon-btn">
+            <div class="action-icons"> 
+              <button id="cart-toggle" class="icon-btn cart-toggle">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="badge">0</span>
+                <span class="badge" id="cart-badge">0</span>
               </button>
             </div>
           </div>
@@ -48,6 +43,65 @@
         </div>
       </div>
     </header>
+    
+    <!-- Боковая панель корзины -->
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3 class="cart-title">
+          <i class="fas fa-shopping-cart"></i>
+          Кошик
+        </h3>
+        <button class="cart-close" id="cart-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cart-content">
+        <div class="cart-items" id="cart-items">
+      
+
+          </div>
+        </div>
+
+        <div class="cart-empty" id="cart-empty">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Ваш кошик порожній</p>
+          <button class="btn secondary-btn continue-shopping">
+            Продовжити покупки
+          </button>
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Товари:</span>
+            <span id="cart-subtotal">0 грн</span>
+          </div>
+          <div class="summary-row">
+            <span>Доставка:</span>
+            <span id="cart-shipping">50 грн</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total">
+            <span>Загалом:</span>
+            <span id="cart-total">50 грн</span>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <button class="btn cta-btn checkout-btn" id="checkout-btn">
+            <i class="fas fa-lock"></i>
+            Оформити замовлення
+          </button>
+          <button class="btn secondary-btn clear-cart-btn" id="clear-cart-btn">
+            <i class="fas fa-trash"></i>
+            Очистити кошик
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay для корзины -->
+    <div id="cart-overlay" class="cart-overlay"></div>
 
     <section id="breadcrumbs" class="breadcrumbs-section">
       <div class="container">
@@ -212,10 +266,14 @@
             </div>
 
             <div class="product-actions">
-              <button class="btn cta-btn add-to-cart-btn" id="add-to-cart">
-                <i class="fas fa-shopping-cart"></i>
-                Додати до кошика
-              </button>
+              <button
+                  class="btn product-btn add-to-cart"
+                  data-id="1"
+                  data-name="One Piece Том 102"
+                  data-price="350"
+                  data-image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpm1.aminoapps.com%2F9107%2F0216761dc01640f1234501f6e9e755e73d5c2581r1-833-1300v2_uhq.jpg&f=1&nofb=1&ipt=0c1be583790e1f8e2e56cc4e5353fdf042bcbb5c6a08cddfee072e65f9e5ef4f">
+                  В кошик
+                </button>
               <button
                 class="btn secondary-btn wishlist-btn"
                 id="add-to-wishlist"
@@ -768,5 +826,7 @@
     </div>
 
     <script src="OPSC.js"></script>
+    <script src="/JS-bt/basket/basket.js"></script>
+
   </body>
 </html>
