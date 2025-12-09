@@ -1,4 +1,4 @@
-// JavaScript для страницы товара
+
 document.addEventListener('DOMContentLoaded', function() {
     initProductGallery();
     initProductOptions();
@@ -252,7 +252,7 @@ function initReviews() {
             paginationButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Здесь можно добавить загрузку новых отзывов
+           
             showNotification('Завантаження наступної сторінки відгуків...');
         });
     });

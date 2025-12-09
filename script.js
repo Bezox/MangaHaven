@@ -1,4 +1,4 @@
-// Основной JavaScript код для интернет-магазина
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация функционала
@@ -145,7 +145,7 @@ function initSearchFunctionality() {
 function performSearch(query) {
     if (query.trim()) {
         showNotification(`Пошук: "${query}"`);
-        // Здесь можно добавить реальную логику поиска
+
         console.log('Searching for:', query);
     }
 }
@@ -605,8 +605,8 @@ function addToCart(id, name, price, image) {
     document.body.style.overflow = 'hidden';
 }
 
-// Остальные функции остаются без изменений
-// initMobileMenu, initSmoothScrolling, initAnimations, initSearchFunctionality, initDetailButtons, showNotification
+
+
 
 // Добавляем CSS анимацию для удаления элементов
 const style = document.createElement('style');
